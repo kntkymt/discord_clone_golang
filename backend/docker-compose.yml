@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/initdb.d:/docker-entrypoint-initdb.d
+      - ./database/data:/var/lib/mysql
+    environment: 
+      MYSQL_DATABASE: discord_clone_database
+      MYSQL_USER: ${USERNAME}
+      MYSQL_PASSWORD: ${USERPASS}
+      MYSQL_ROOT_PASSWORD: ${ROOTPASS}
+    container_name: mysql-container
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports: 
+      - "80:80"
