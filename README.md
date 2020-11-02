@@ -14,7 +14,7 @@
 
 ### client
 
-1. `yarn start`にてアプリを開発モードでビルドし、3000番ポートで起動します。
+1. `yarn start`にて3000番ポートでアプリが起動します。
 [http://localhost:3000](http://localhost:3000)から確認できます。
 
 ### Cors対応について
