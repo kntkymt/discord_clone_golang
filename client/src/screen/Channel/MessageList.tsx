@@ -2,38 +2,16 @@
 import { jsx, css } from '@emotion/core';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
-import React, { FunctionComponent, useState } from 'react';
-import { Box, Grid, Avatar, List, ListItem, makeStyles, Theme, createStyles, Link } from '@material-ui/core';
+import React, { FunctionComponent } from 'react';
+import { Grid, Avatar, List, ListItem } from '@material-ui/core';
 import { Text } from '../../component/Text';
 import { Message } from '../../model/Message';
-import { useWindowDimensions } from '../../hooks/useWindowDimensions';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    modalButton: {
-      color: "#888889",
-      fontWeight: 'bold',
-      '&:hover': {
-         color: "#F2F2F2",
-         fontWeight: 'bold',
-         textDecoration: 'underline white'
-      },
-    },
-    fileName: {
-      textTransform: 'none',
-      '&:hover': {
-        textDecoration: 'underline'
-      }
-    }
-  })
-);
 
 type ItemProps = {
   message: Message;
 };
 
 const Item: FunctionComponent<ItemProps> = (props) => {
-  const { height } = useWindowDimensions();
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -50,8 +28,6 @@ const Item: FunctionComponent<ItemProps> = (props) => {
       return dayjs(date).locale('ja').format('YYYY/MM/DD');
     }
   };
-
-  const classes = useStyles();
 
   return (
     <ListItem>
