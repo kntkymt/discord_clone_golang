@@ -9,7 +9,7 @@ import { Channel } from '../../model/Channel';
 import { useParams } from 'react-router';
 import { useMe } from '../../hooks/useMe';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
-import { useGET, usePOST } from '../../hooks/api';
+import { useGETArray, usePOST } from '../../hooks/api';
 import { Message } from '../../model/Message';
 
 
@@ -33,7 +33,7 @@ export const ChannelScreen: FunctionComponent<Props> = (props) => {
   const { channelId } = useParams();
   const me = useMe();
   const messageCreater = usePOST<Message>(`/private/channels/${channelId}/messages`);
-  const messages = useGET<Message[]>(`/private/channels/${channelId}/messages`);
+  const messages = useGETArray<Message>(`/private/channels/${channelId}/messages`);
   const { width, height } = useWindowDimensions();
 
   const [text, setText] = useState("");
@@ -53,8 +53,8 @@ export const ChannelScreen: FunctionComponent<Props> = (props) => {
       id: 12,
       content: text,
       user: me.item!,
-      createTime: "0001-01-01T00:00:00Z",
-      updateTime: "0001-01-01T00:00:00Z"
+      createTime: new Date("0001-01-01T00:00:00Z"),
+      updateTime: new Date("0001-01-01T00:00:00Z")
     };
 
     messageCreater.send(message)

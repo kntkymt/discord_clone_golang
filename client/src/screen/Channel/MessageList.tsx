@@ -13,8 +13,7 @@ type ItemProps = {
 
 const Item: FunctionComponent<ItemProps> = (props) => {
 
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
+  const formatDate = (date: Date): string => {
     const oneDay = 24 * 60 * 60 * 1000;
     const now = Date.now();
 
