@@ -35,7 +35,8 @@ type ItemProps = {
 const Item: FunctionComponent<ItemProps> = (props) => {
   const { height } = useWindowDimensions();
 
-  const formatDate = (date: Date): string => {
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
     const oneDay = 24 * 60 * 60 * 1000;
     const now = Date.now();
 
@@ -59,7 +60,7 @@ const Item: FunctionComponent<ItemProps> = (props) => {
         <Grid style={{width: "90%"}} item>
           <Grid item container direction='row' >
             <Text color={'#FFFFFF'} fontWeight={'500'}>{props.message.user.name}</Text>
-            <Text css={itemStyles.date} color={'#6C6F76'} fontSize={12}>{props.message.createTime}</Text>
+            <Text css={itemStyles.date} color={'#6C6F76'} fontSize={12}>{formatDate(props.message.createTime)}</Text>
           </Grid>
           <Text color={'#E6E7E7'} fontWeight={'500'}>{props.message.content}</Text>
         </Grid>
