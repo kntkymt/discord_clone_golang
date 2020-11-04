@@ -9,10 +9,10 @@ import { ServerIconButton } from './ServerIconButton';
 import { HomeScreen } from '../Home/HomeScreen';
 import { Switch, Route, useHistory, useLocation } from 'react-router';
 import '../../extensions/arrayExtension';
-import { useGET } from '../../hooks/api';
+import { useGETArray } from '../../hooks/api';
 
 export const ServersScreen: FunctionComponent = () => {
-  const servers = useGET<Server[]>("/private/me/servers");
+  const servers = useGETArray<Server>("/private/me/servers");
   const [selectedItemId, setSelectedItemId] = useState("");
   const history = useHistory();
   const location = useLocation();
@@ -76,7 +76,7 @@ export const ServersScreen: FunctionComponent = () => {
           <Route exact path={'/home'} component={HomeScreen}/>
           <Route
             path={'/:serverId'}
-            render={() => <ChannelsScreen key={selectedItemId} server={servers.item?.filter(server => String(server.id) === selectedItemId).first()!} />}/>
+            render={() => <ChannelsScreen key={selectedItemId} server={servers.item.filter(server => String(server.id) === selectedItemId).first()!} />}/>
         </Switch>
       </Grid>
     </Grid>

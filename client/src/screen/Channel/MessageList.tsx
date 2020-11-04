@@ -2,38 +2,16 @@
 import { jsx, css } from '@emotion/core';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
-import React, { FunctionComponent, useState } from 'react';
-import { Box, Grid, Avatar, List, ListItem, makeStyles, Theme, createStyles, Link } from '@material-ui/core';
+import React, { FunctionComponent } from 'react';
+import { Grid, Avatar, List, ListItem } from '@material-ui/core';
 import { Text } from '../../component/Text';
 import { Message } from '../../model/Message';
-import { useWindowDimensions } from '../../hooks/useWindowDimensions';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    modalButton: {
-      color: "#888889",
-      fontWeight: 'bold',
-      '&:hover': {
-         color: "#F2F2F2",
-         fontWeight: 'bold',
-         textDecoration: 'underline white'
-      },
-    },
-    fileName: {
-      textTransform: 'none',
-      '&:hover': {
-        textDecoration: 'underline'
-      }
-    }
-  })
-);
 
 type ItemProps = {
   message: Message;
 };
 
 const Item: FunctionComponent<ItemProps> = (props) => {
-  const { height } = useWindowDimensions();
 
   const formatDate = (date: Date): string => {
     const oneDay = 24 * 60 * 60 * 1000;
@@ -50,8 +28,6 @@ const Item: FunctionComponent<ItemProps> = (props) => {
     }
   };
 
-  const classes = useStyles();
-
   return (
     <ListItem>
       <Grid css={itemStyles.root} container direction='row' >
@@ -59,7 +35,7 @@ const Item: FunctionComponent<ItemProps> = (props) => {
         <Grid style={{width: "90%"}} item>
           <Grid item container direction='row' >
             <Text color={'#FFFFFF'} fontWeight={'500'}>{props.message.user.name}</Text>
-            <Text css={itemStyles.date} color={'#6C6F76'} fontSize={12}>{props.message.createTime}</Text>
+            <Text css={itemStyles.date} color={'#6C6F76'} fontSize={12}>{formatDate(props.message.createTime)}</Text>
           </Grid>
           <Text color={'#E6E7E7'} fontWeight={'500'}>{props.message.content}</Text>
         </Grid>

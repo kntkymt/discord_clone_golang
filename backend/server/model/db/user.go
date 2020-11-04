@@ -11,7 +11,6 @@ type User struct {
 	Name       string    `db:"name"`
 	CreateTime time.Time `db:"create_time"`
 	UpdateTime time.Time `db:"update_time"`
-	// ServerIDs  []int64 `db:`
 }
 
 func (object User) ToValue() value.User {

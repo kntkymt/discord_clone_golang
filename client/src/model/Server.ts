@@ -6,6 +6,6 @@ export interface Server {
   name: string;
   users: User[];
   channels: Channel[];
-  createTime: string;
-  updateTime: string;
+  createTime: Date;
+  updateTime: Date;
 };
