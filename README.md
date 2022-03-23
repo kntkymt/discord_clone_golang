@@ -2,8 +2,6 @@
 ## Overview
 - [Discord](https://discord.com/) のReact + Golang製クローンアプリ
 - [discord_clone_firebase](https://github.com/kntkymt/discord_clone_firebase) のバックエンドをGolangで記述したもの
-    - Demo: https://discord-clone-36c89.web.app/ <br>
-    ※ ユーザー名の入力が求められますが、「test」等を入力していただければ大丈夫です。
 
 ## Develop
 ### backend
